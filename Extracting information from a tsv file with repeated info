@@ -3,15 +3,16 @@ install.packages("readr")
 # Load the installed Package
 library(readr)
 # Reading the contents of TSV file using read_tsv() method
-Data <-readr::read_tsv('dataset.tsv')
+library(stringr)
+Data <-readr::read_tsv('ncbi_dataset_Species.tsv')
 print(Data)
-Data_2 = data.frame(Data[ , 5])
-lengths(Data_2)
-typeof(Data_2)
-print(Data_2)
+Data_Organism = data.frame(Data[ , 5])
+lengths(Data_Organism)
+typeof(Data_Organism)
+print(Data_Organism)
 Final_Data = list()
-for(f in 1:lengths(Data_2)){
-    if(Data_2[f, ] %in% Final_Data){
+for(f in 1:lengths(Data_Organism)){
+    if(Data_Organism[f, ] %in% Final_Data){
       print("true")
       f = f + 1
     }else{
@@ -19,4 +20,7 @@ for(f in 1:lengths(Data_2)){
     }
 }
 print(Final_Data)
-write.table(t(data.frame(Final_Data)), file = "File_Name.txt", append = T, row.names = F, col.names = F)
+Final <- knitr::combine_words(Final_Data) #For combining the results into sentences. 
+print(Final)
+write.table(data.frame(Final), file = "Patent_Diptera_2.txt", append = T, row.names = F, col.names = F)
+
