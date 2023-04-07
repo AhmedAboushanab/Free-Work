@@ -1,0 +1,4 @@
+# Making manifest files for qiime2 on terminal (mac)
+ls *.fastq > file-id.tsv
+ls -d "$PWD"/*_1.fastq > paths.tsv
+paste file-id.tsv paths.tsv > Manifest.tsv
