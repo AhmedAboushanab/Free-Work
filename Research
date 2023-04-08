@@ -2,3 +2,11 @@
 ls *.fastq > file-id.tsv
 ls -d "$PWD"/*_1.fastq > paths.tsv
 paste file-id.tsv paths.tsv > Manifest.tsv
+# Copy and paste or upload the file on google sheets and examine with Keemei
+# Combine all the fastq files into one big fastq file on terminal (mac)
+cat *.fastq > seqs.fastq 
+# Samples were transformed from fastq (binary) to fasta manuall using snapgene viewer
+# awk was used to parse FASTA files this way
+awk '{print $1 }' FASTA_IN > FASTA_OUT
+
+
